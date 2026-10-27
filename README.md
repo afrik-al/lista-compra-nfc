@@ -6,20 +6,9 @@ Español | English
 Una lista de la compra familiar e interactiva para el móvil, pensada para abrirse como por arte de magia al acercar el teléfono a una etiqueta NFC pegada en la nevera. Sin cuentas ni contraseñas, y con un precioso aspecto de libreta dibujada a mano. ˖⁺‧₊˚♡˚₊‧⁺˖
 
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="[https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41)" width="250" />
-      <br />
-      <sub><b>Pantalla principal</b> (｡♥‿♥｡)</sub>
-    </td>
-    <td align="center">
-      <img src="[https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf)" width="250" />
-      <br />
-      <sub><b>Ticket de compra</b> 🛒✨</sub>
-    </td>
-  </tr>
-</table>
+| Pantalla principal (｡♥‿♥｡) | Ticket de compra 🛒✨ |
+| :---: | :---: |
+| ![Pantalla principal](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41) | ![Ticket de compra](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf) |
 
 ¿Qué es este proyecto? ⋆˚꩜｡
 Este proyecto nació para hacer la compra en familia mucho más fácil, mona y accesible: una plataforma web conectada en tiempo real mediante Firebase que se abre al instante con NFC. Combina un diseño artesanal y tierno con la máxima comodidad para organizar supermercados, marcar productos y llevar un historial de tickets sin complicaciones. (★ω★)
@@ -61,20 +50,9 @@ Creado por Africa Albarral.
 
 An interactive family grocery list mobile web application, designed to open magically by tapping your phone against an NFC tag stuck on the fridge. No individual accounts or passwords, with a lovely hand-drawn notebook aesthetic. ˖⁺‧₊˚♡˚₊‧⁺˖
 
-<table>
-  <tr>
-    <td align="center">
-      <img src="[https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41)" width="250" />
-      <br />
-      <sub><b>Main Screen</b> (｡♥‿♥｡)</sub>
-    </td>
-    <td align="center">
-      <img src="[https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf)" width="250" />
-      <br />
-      <sub><b>Shopping Receipt</b> 🛒✨</sub>
-    </td>
-  </tr>
-</table>
+| Main Screen (｡♥‿♥｡) | Shopping Receipt 🛒✨ |
+| :---: | :---: |
+| ![Main Screen](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41) | ![Shopping Receipt](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf) |
 
 What is this project? ⋆˚꩜｡
 This project was created to make family shopping effortless and cute: a real-time web platform powered by Firebase that opens instantly via NFC. It combines a warm, hand-crafted design with the practical convenience of organizing supermarkets, checking off items, and managing shopping receipts seamlessly. (★ω★)

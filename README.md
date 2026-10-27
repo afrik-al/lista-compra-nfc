@@ -1,53 +1,111 @@
-# Lista de la compra con NFC
+Lista de la compra NFC (｡♥‿♥｡)
+Español | English
 
-Lista de la compra familiar para el móvil, pensada para abrirse al acercar el teléfono a una **etiqueta NFC pegada en la nevera**.
-Sin cuentas ni contraseñas individuales, sin instalar nada. Aspecto de libreta dibujada a mano.
+⋆˚࿔ Español
 
-- Una lista compartida por familia, sincronizada en tiempo real entre móviles.
-- Un supermercado por pestaña (Mercadona, LIDL, Carrefour, ALDI, BonÀrea, Kiwoko, La Sirena, Jardiland).
-- Añadir, editar, marcar, cantidades y borrar deslizando.
-- Al finalizar la compra se genera un **ticket**; se conserva el historial (y se puede borrar ticket a ticket).
-- Funciona sin conexión: los cambios se guardan y se envían al reconectar.
+Una lista de la compra familiar e interactiva para el móvil, pensada para abrirse como por arte de magia al acercar el teléfono a una etiqueta NFC pegada en la nevera. Sin cuentas ni contraseñas, y con un precioso aspecto de libreta dibujada a mano. ˖⁺‧₊˚♡˚₊‧⁺˖
 
-**Cada persona usa su propio proyecto gratuito de Firebase.** Tus datos viven en TU proyecto: nadie más los ve ni comparte cuota contigo.
 
-## Puesta en marcha (≈15 minutos)
+<table>
+  <tr>
+    <td align="center">
+      <img src="[https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41)" width="250" />
+      <br />
+      <sub><b>Pantalla principal</b> (｡♥‿♥｡)</sub>
+    </td>
+    <td align="center">
+      <img src="[https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf)" width="250" />
+      <br />
+      <sub><b>Ticket de compra</b> 🛒✨</sub>
+    </td>
+  </tr>
+</table>
 
-### 1. Crea tu proyecto de Firebase (gratis, sin tarjeta)
-1. Entra en <https://console.firebase.google.com> > **Añadir proyecto** (puedes desactivar Google Analytics).
-2. **Compilación > Firestore Database > Crear base de datos**: modo **producción**, ubicación europea (p. ej. `eur3`).
-3. **Configuración del proyecto > Tus apps > `</>` (Web)**: registra una app y copia el objeto `firebaseConfig`.
+¿Qué es este proyecto? ⋆˚꩜｡
+Este proyecto nació para hacer la compra en familia mucho más fácil, mona y accesible: una plataforma web conectada en tiempo real mediante Firebase que se abre al instante con NFC. Combina un diseño artesanal y tierno con la máxima comodidad para organizar supermercados, marcar productos y llevar un historial de tickets sin complicaciones. (★ω★)
 
-### 2. Configura la web
-Copia `firebase-config.example.js` como `firebase-config.js` y pega tus datos. Esos datos **no son secretos**; la seguridad la dan las reglas de `firestore.rules`.
-Deja `allowCreate: true` si quieres ver el botón "Crear mi lista" la primera vez.
+Características principales ⋆˚꩜｡
+- Lista Familiar en Tiempo Real: Compartida al instante entre todos los móviles de casa.
+- Varios Supermercados: Pestañas organizadas para Mercadona, LIDL, Carrefour, ALDI, BonÀrea, Kiwoko, La Sirena y Jardiland.
+- Gestiones Sencillas: Añade, edita, marca, pon cantidades y borra deslizando el dedito.
+- Historial de Tickets: Genera un ticket adorable al finalizar cada compra que puedes consultar o borrar.
+- Modo Sin Conexión: Los cambios se guardan localmente y se envían al reconectar.
 
-### 3. Publica (Firebase Hosting, también gratis)
-    npm install -g firebase-tools
-    firebase login
-    firebase use --add            # elige tu proyecto
-    firebase deploy --only firestore:rules,hosting
-Tu web quedará en `https://TU_PROYECTO.web.app`.
+Tecnologías utilizadas ⋆˚꩜｡
+- HTML5 & CSS3: Estructura web e interfaz personalizada con estética de libreta dibujada a mano.
+- JavaScript (ES6+): Lógica interactiva y fluida sin frameworks pesados.
+- Firebase Firestore: Base de datos en tiempo real y alojamiento seguro mediante Firebase Hosting.
+- NFC Web API: Enlace directo desde etiquetas físicas de la nevera.
 
-### 4. Crea tu lista y programa la etiqueta
-1. Abre tu web en el móvil y pulsa **Crear mi lista**. Se genera una clave aleatoria y verás un enlace del tipo `https://TU_PROYECTO.web.app/#CLAVE`.
-2. Cópialo y escríbelo en la etiqueta NFC (app "NFC Tools" > Escribir > Registro URL). **Ese enlace es la contraseña de tu lista.**
-3. Para entrar desde otros móviles, acércalos a la etiqueta. Si necesitas ver el enlace de nuevo, **mantén pulsado el nombre del supermercado** (el título grande) unos segundos.
-4. Cuando ya hayas creado tu lista, puedes poner `allowCreate: false` en `firebase-config.js` y volver a desplegar para que nadie más pueda crear listas en tu proyecto.
+Estructura del Repositorio ⋆˚꩜｡
+<pre>
+lista-compra-nfc/
+├── index.html                  # Página principal de la aplicación
+├── app.js                      # Lógica principal e interfaz
+├── style.css                   # Estilos visuales tipo libreta
+├── data.js                     # Datos y configuración de supermercados
+├── db.bundle.js                # Capa empaquetada de datos
+├── firebase-config.example.js  # Plantilla de configuración de Firebase
+├── firebase.json               # Configuración de despliegue
+├── firestore.rules             # Reglas de seguridad de la base de datos
+├── fuente-db/                  # Código fuente de la base de datos Firestore
+└── assets/                     # Ilustraciones, iconos y recursos gráficos
+</pre>
 
-## Cómo está protegida
-No hay cuentas. La lista cuelga de una clave larga y aleatoria (`familias/{clave}/…`). Las reglas de Firestore **no permiten listar** las familias: sin la clave no se puede leer ni borrar nada. Además validan el formato de los datos.
-Es el mismo nivel de protección que un enlace de "cualquiera con el enlace" de Google Docs: si se filtra, genera otra clave (cambia lo que hay tras `#`) y reescribe la etiqueta.
+Autora ⋆୨୧˚૮ ＾ﻌ＾ა˚୨୧⋆
+Creado por Africa Albarral.
 
-## Costes y límites
-El plan gratuito de Firebase (Spark) cubre de sobra el uso de una familia y no genera facturas: si se agotara una cuota, el servicio se detiene hasta que se reinicia. Revisa las cuotas vigentes en la documentación de Firebase.
+---
 
-## Desarrollo
-- `index.html`, `app.js`, `style.css`: la interfaz (JavaScript sin frameworks).
-- `fuente-db/`: la capa de datos (Firestore). Para reconstruir `db.bundle.js`: `cd fuente-db && npm install && npm run build`.
-- Para probar en local: `python3 -m http.server` y abre `http://localhost:8000/#CLAVE_DE_PRUEBA` (24-64 caracteres: letras, números, `-`, `_`).
+⋆˚࿔ English
 
-## Licencias
-- **Código:** MIT (ver `LICENSE`).
-- **Ilustraciones** de la carpeta `assets/` (dibujos de la libreta, botones, iconos y títulos): CC BY-NC 4.0 (ver `LICENSE-ARTE.md`).
-- Los nombres y logotipos de supermercados son marcas de sus respectivos propietarios; aquí aparecen como ilustraciones y este proyecto no está afiliado a ellos.
+An interactive family grocery list mobile web application, designed to open magically by tapping your phone against an NFC tag stuck on the fridge. No individual accounts or passwords, with a lovely hand-drawn notebook aesthetic. ˖⁺‧₊˚♡˚₊‧⁺˖
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="[https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41](https://github.com/user-attachments/assets/8b24cebf-84e9-4b82-808d-303972475c41)" width="250" />
+      <br />
+      <sub><b>Main Screen</b> (｡♥‿♥｡)</sub>
+    </td>
+    <td align="center">
+      <img src="[https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf](https://github.com/user-attachments/assets/bbbe6426-e384-4edc-9210-fb558da2edaf)" width="250" />
+      <br />
+      <sub><b>Shopping Receipt</b> 🛒✨</sub>
+    </td>
+  </tr>
+</table>
+
+What is this project? ⋆˚꩜｡
+This project was created to make family shopping effortless and cute: a real-time web platform powered by Firebase that opens instantly via NFC. It combines a warm, hand-crafted design with the practical convenience of organizing supermarkets, checking off items, and managing shopping receipts seamlessly. (★ω★)
+
+Key Features ⋆˚꩜｡
+- Real-Time Family List: Synchronized instantly across all phones at home.
+- Multiple Supermarkets: Dedicated tabs for Mercadona, LIDL, Carrefour, ALDI, BonÀrea, Kiwoko, La Sirena, and Jardiland.
+- Easy Interactions: Add, edit, check off items, adjust quantities, and swipe to delete.
+- Receipt History: Generates an adorable ticket upon completing a purchase that you can view or clear.
+- Offline Mode: Changes are saved locally and synced automatically once reconnected.
+
+Tech Stack ⋆˚꩜｡
+- HTML5 & CSS3: Web structure and custom hand-drawn notebook styling.
+- JavaScript (ES6+): Interactive logic without heavy frameworks.
+- Firebase Firestore: Real-time database and secure hosting via Firebase Hosting.
+- NFC Integration: Direct launching from physical fridge tags.
+
+Repository Structure ⋆˚꩜｡
+<pre>
+lista-compra-nfc/
+├── index.html                  # Main application entry point
+├── app.js                      # Main interface logic
+├── style.css                   # Notebook-style visual assets
+├── data.js                     # Supermarket data and setup
+├── db.bundle.js                # Bundled database layer
+├── firebase-config.example.js  # Firebase configuration template
+├── firebase.json               # Deployment configuration
+├── firestore.rules             # Database security rules
+├── fuente-db/                  # Firestore database source code
+└── assets/                     # Illustrations, icons, and graphic resources
+</pre>
+
+Author ⋆୨୧˚૮ ＾ﻌ＾ა˚୨୧⋆
+Created by Africa Albarral.

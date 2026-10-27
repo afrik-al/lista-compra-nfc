@@ -1,0 +1,1 @@
+{ "name": "compra-db", "private": true, "scripts": { "build": "esbuild src/db.js --bundle --minify --format=iife --target=es2020 --outfile=../db.bundle.js" }, "dependencies": { "firebase": "^13.1.0" }, "devDependencies": { "esbuild": "*" } }

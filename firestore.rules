@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // La "clave" es el secreto de la etiqueta NFC: largo e imposible de adivinar.
+    // No existe ninguna regla para listar /familias, así que sin la clave nadie puede ver ni borrar nada.
+    function claveOk(fid) { return fid.matches('[A-Za-z0-9_-]{24,64}'); }
+    function tiendas() { return ['mercadona','lidl','carrefour','aldi','bonarea','kiwoko','lasirena','jardiland']; }
+
+    function productoOk(d) {
+      return d.keys().hasOnly(['supermercado','nombre','cantidad','nota','marcado','creado'])
+        && d.keys().hasAll(['supermercado','nombre','cantidad','nota','marcado','creado'])
+        && d.supermercado in tiendas()
+        && d.nombre is string && d.nombre.size() >= 1 && d.nombre.size() <= 60
+        && d.cantidad is string && d.cantidad.size() <= 10
+        && d.nota is string && d.nota.size() <= 200
+        && d.marcado is bool && d.creado is number;
+    }
+    function ticketOk(d) {
+      return d.keys().hasOnly(['supermercado','fecha','productos'])
+        && d.keys().hasAll(['supermercado','fecha','productos'])
+        && d.supermercado in tiendas()
+        && d.fecha is string && d.fecha.size() <= 40
+        && d.productos is list && d.productos.size() >= 1 && d.productos.size() <= 300;
+    }
+
+    match /familias/{fid}/supermercados/{sid} {
+      allow read: if claveOk(fid);
+      allow create, update: if claveOk(fid) && sid in tiendas()
+        && request.resource.data.keys().hasOnly(['nombre','orden'])
+        && request.resource.data.nombre is string && request.resource.data.nombre.size() <= 40
+        && request.resource.data.orden is number;
+    }
+    match /familias/{fid}/productos/{pid} {
+      allow read, delete: if claveOk(fid);
+      allow create, update: if claveOk(fid) && productoOk(request.resource.data);
+    }
+    // Los tickets son un historial: se pueden crear, leer y eliminar uno a uno, pero NO modificar.
+    match /familias/{fid}/tickets/{tid} {
+      allow read, delete: if claveOk(fid);
+      allow create: if claveOk(fid) && ticketOk(request.resource.data);
+    }
+  }
+}
